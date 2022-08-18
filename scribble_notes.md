@@ -34,26 +34,26 @@ after every run of your armed tests.
 
 2. Run the `scribble` command to arm `Treasury.sol`:
 
-    $ scribble contracts/Treasury.sol --output-mode files --arm
+        $ scribble contracts/Treasury.sol --output-mode files --arm
 
 3. Run tests to see what problems arise from assertion-armed files:
 
-    $ yarn test contracts/Treasury.sol
+        $ yarn test contracts/Treasury.sol
 
 4. Run the `scribble` command to disarm `Treasury.sol`:
 
-    $ scribble contracts/Treasury.sol --disarm
+        $ scribble contracts/Treasury.sol --disarm
 
 To employ the simplified CLI workflow, replace some of the above commands as
 follows:
 
 * Replace the command in step 2 with this:
 
-    $ denote arm contracts/Treasury.sol
+        $ denote arm contracts/Treasury.sol
 
 * Replace the command in step 4 with this:
 
-    $ denote disarm contracts/Treasury.sol
+        $ denote disarm contracts/Treasury.sol
 
 The denote command provides general help output via command line options,
 including `-h`, `-help`, and `--help`.
