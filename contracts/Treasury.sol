@@ -38,6 +38,8 @@ contract Treasury is ITreasury, AdminControlled {
 
     /// @notice initializes ownable Treasury with list of managers and supported tokens
     /// @param _supportedTokens list of supported tokens
+    /// Ideally, type(uint256) in annotation should be something like type(sizeof(i)).
+    /// #if_succeeds "address[] array is too big" _supportedTokens.length < type(uint256).max;
     function initialize(address[] memory _supportedTokens, uint256 _flags)
         external
         initializer
@@ -55,6 +57,8 @@ contract Treasury is ITreasury, AdminControlled {
     /// @param _user user to transfer tokens to
     /// @param _token token to transfer to user
     /// @param _amount token to transfer to user
+    /// #if_succeeds "non-admin user" hasRole(DEFAULT_ADMIN_ROLE, msg.sender);
+    /// #if_succeeds "unsupported token" isSupportedToken[_token];
     function payRewards(
         address _user,
         address _token,
@@ -68,6 +72,7 @@ contract Treasury is ITreasury, AdminControlled {
     /// supported tokens means any future stream token should be
     /// whitelisted here
     /// @param _token stream ERC20 token address
+    /// #if_succeeds "non-manager user" hasRole(TREASURY_MANAGER_ROLE, msg.sender);
     function addSupportedToken(address _token)
         external
         pausable(1)
@@ -80,6 +85,7 @@ contract Treasury is ITreasury, AdminControlled {
 
     /// @notice removed token as a supproted rewards token by Treasury
     /// @param _token stream ERC20 token address
+    /// #if_succeeds "non-manager user" hasRole(TREASURY_MANAGER_ROLE, msg.sender);
     function removeSupportedToken(address _token)
         external
         pausable(1)
