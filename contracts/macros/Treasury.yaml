@@ -1,0 +1,8 @@
+treasury:
+  variable:
+    isSupportedToken: mapping (address => bool)
+    _supportedTokens: address[] memory
+  properties:
+    initialize(_supportedTokens, _flags):
+      - msg: "address[] array is too big"
+        prop: "#if_succeeds _supportedTokens.length < type(uint256).max;"
