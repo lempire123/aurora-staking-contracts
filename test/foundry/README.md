@@ -1,6 +1,6 @@
 # JetStaking Foundry tests
 
-This repository contains foundry tests for the aurora jetStakingV1.sol contract.
+This repository contains foundry tests for `jetStakingV1.sol` and `Treasury.sol` contract.
 
 ## Install Foundry
 
@@ -18,24 +18,10 @@ This will download foundryup. Then install Foundry by running:
 foundryup
 ```
 
-## Compile
+## Compile and test
 
-Compile the contracts using the following command:
-
-```bash
-forge build
-```
-
-## Test
-
-To run the test:
+Compile the contracts and run the tests using the following command:
 
 ```bash
-forge test
-```
-
-To run test in forked environment:
-
-```bash
-forge test --rpc-url <your_rpc_url>
+yarn run forge-test
 ```
