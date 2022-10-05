@@ -32,8 +32,10 @@ contract JetStakingV1 is AdminControlled {
     // RPS_MULTIPLIER = Aurora_max_supply x weight(1000) * 10 (large enough to always release rewards) =
     // 10**9 * 10**18 * 10**3 * 10= 10**31
     uint256 private constant RPS_MULTIPLIER = 1e31;
+    // #if_updated "staked amount exceeds supply" totalAmountOfStakedAurora < 10**10;
     uint256 public totalAmountOfStakedAurora;
     uint256 public touchedAt;
+    /// #if_updated "shares exceed staked amount" totalAuroraShares < totalAmountOfStakedAurora;
     uint256 public totalAuroraShares;
     uint256 public totalStreamShares;
     address public treasury;
